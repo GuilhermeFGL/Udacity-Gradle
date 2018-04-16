@@ -4,7 +4,7 @@ import java.util.Random;
 
 public final class Jokes {
 
-    private static Integer sLastPosition = -1;
+    private static final Random RANDON = new Random();
     private static final String[] sJokes = {
             "piada 1",
             "piada 2",
@@ -18,18 +18,7 @@ public final class Jokes {
             "piada 10"
     };
 
-    private Jokes() { }
-
-    private static int getRandonNoRepeatPosition() {
-        int randonPosition;
-        do {
-            randonPosition = new Random().nextInt(sJokes.length);
-        } while (randonPosition != sLastPosition);
-        sLastPosition = randonPosition;
-        return randonPosition;
-    }
-
     public static String getJoke() {
-        return sJokes[getRandonNoRepeatPosition()];
+        return sJokes[RANDON.nextInt(sJokes.length)];
     }
 }
