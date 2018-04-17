@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -15,7 +16,7 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
     private final EndpointCallBack mCallback;
 
-    EndpointsAsyncTask(EndpointCallBack callBack) {
+    EndpointsAsyncTask(@Nullable EndpointCallBack callBack) {
         mCallback = callBack;
     }
 
@@ -48,7 +49,9 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        mCallback.onResult(result);
+        if (mCallback != null) {
+            mCallback.onResult(result);
+        }
     }
 
     public interface EndpointCallBack {
