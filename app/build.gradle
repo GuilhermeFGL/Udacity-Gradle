@@ -42,15 +42,6 @@ android {
             applicationId "com.udacity.gradle.builditbigger.paid"
         }
     }
-
-    sourceSets {
-        free {
-            manifest.srcFile 'src/free/AndroidManifest.xml'
-        }
-        paid {
-            manifest.srcFile 'src/paid/AndroidManifest.xml'
-        }
-    }
 }
 
 dependencies {
@@ -62,12 +53,12 @@ dependencies {
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
     freeImplementation 'com.google.android.gms:play-services:11.8.0'
 
     implementation project(':frontend')
     implementation project(':backend')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
